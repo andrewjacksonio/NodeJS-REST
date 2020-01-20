@@ -1,0 +1,24 @@
+var expect  = require('chai').expect;
+var request = require('request');
+var port = process.env.PORT || 3000;
+
+it('Main page content', function(done) {
+    request('http://localhost:' + port , function(error, response, body) {
+        expect(body).to.equal('Hello World');
+        done();
+    });
+});
+
+it('Main page status', function(done) {
+    request('http://localhost:' + port , function(error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        done();
+    });
+});
+
+it('About page content', function(done) {
+    request('http://localhost:' + port + '/about' , function(error, response, body) {
+        expect(response.statusCode).to.equal(404);
+        done();
+    });
+});
