@@ -4,4 +4,9 @@ var express = require('express'),
 
 app.listen(port);
 
+//create api
+app.get('/', (req,res)=>{
+    res.send('Hello World');
+})
+
 console.log('todo list RESTful API server started on: ' + port);
