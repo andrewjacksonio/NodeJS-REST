@@ -38,21 +38,15 @@ exports.read_a_student = function (req, res) {
         });
     }
     else if (req.query.class) {
-      res.json(req.query.class);
-    }
-    else {
-        Student.getAllStudent(function (err, student) {
+        Student.getStudentByClass(req.query.class, function (err, student) {
             if (err)
                 res.send(err);
-            console.log('res', student);
-            res.send(student);
+            res.json(student);
         });
     }
-    /*Student.getStudentById(req.params.id, function (err, student) {
-        if (err)
-            res.send(err);
-        res.json(student);
-    });*/
+    else {
+        res.status(400).send({ error: true, message: 'Please provide valid query - id, class' });
+    }
 };
 
 exports.update_a_student_class = function (req, res) {

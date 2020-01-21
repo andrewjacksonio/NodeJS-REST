@@ -33,7 +33,18 @@ Student.getStudentById = function (studentId, result) {
         }
         else {
             result(null, res);
+        }
+    });
+};
 
+Student.getStudentByClass = function (studentClass, result) {
+    sql.query("Select * from students where class = ? ", studentClass, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            result(null, res);
         }
     });
 };
