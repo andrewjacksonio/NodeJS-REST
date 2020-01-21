@@ -2,7 +2,9 @@ version: '3'
 services:
   api:
     image: nodejs-app
-    build: Dockerfile
+    build:
+      context: ./
+      dockerfile: Dockerfile
     networks:
       - backend
     ports:
@@ -10,7 +12,9 @@ services:
 
   web-cli:
     image: nodejs-cli
-    build: Dockerfile.curl
+    build:
+      context: ./
+      dockerfile: Dockerfile.curl
     networks:
       - backend
     command: sh

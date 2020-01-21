@@ -13,7 +13,7 @@ steps:
       - exit_status: 1
     plugins:
       - docker-compose#v3.1.0:
-          run: api
+          run: web-cli
           command: ["npm", "run", "pre-test"]
 
   - name: ":node: Test"
