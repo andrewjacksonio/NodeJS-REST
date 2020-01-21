@@ -19,6 +19,5 @@ steps:
   - name: ":node: Test"
     plugins:
       - docker-compose#v3.1.0:
-          run:
-            - web-cli
+          run: web-cli
           command: ["npm", "run", "test"]
