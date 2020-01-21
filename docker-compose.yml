@@ -2,14 +2,15 @@ version: '3'
 services:
   api:
     image: nodejs-app
-    build: .
+    build: Dockerfile
     networks:
       - backend
     ports:
       - "3000:3000"
 
   web-cli:
-    image: nodejs-app
+    image: nodejs-cli
+    build: Dockerfile.curl
     networks:
       - backend
     command: sh
