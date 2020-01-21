@@ -1,4 +1,11 @@
 steps:
+  - name: ":node: Pre-Test(Lint)"
+    command: npm test
+    soft_fail:
+      - exit_status: 1
+    plugins:
+      - docker-compose#v3.1.0:
+          run: api
   - name: ":node: Test"
     command: npm test
     plugins:
