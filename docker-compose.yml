@@ -13,7 +13,8 @@ services:
     networks:
       - backend
     command: sh
-
+    depends_on:
+      - api
 networks:
   backend:
     driver: bridge
