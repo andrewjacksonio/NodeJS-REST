@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --reporter list",
-    "pre-test": "eslint --ignore-path .gitignore ."
+    "pre-test": "./node_modules/.bin/eslint --ignore-path .gitignore ."
   },
   "repository": {
     "type": "git",

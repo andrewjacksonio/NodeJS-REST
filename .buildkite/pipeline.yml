@@ -4,7 +4,7 @@ steps:
       - exit_status: 1
     plugins:
       - docker-compose#v3.1.0:
-          build: api
+          build: .
 
   - wait
 
@@ -19,7 +19,6 @@ steps:
   - name: ":node: Test"
     plugins:
       - docker-compose#v3.1.0:
-          run: 
-            - api
+          run:
             - web-cli
           command: ["npm", "run", "test"]
