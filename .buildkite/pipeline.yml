@@ -1,7 +1,5 @@
 steps:
   - name: ":docker: Build"
-    soft_fail:
-      - exit_status: 1
     plugins:
       - docker-compose#v3.1.0:
           build: .
@@ -21,3 +19,9 @@ steps:
       - docker-compose#v3.1.0:
           run: web-cli
           command: ["npm", "run", "test"]
+
+  - wait
+
+  - name: ":ecr: Upload Docker Image"
+    command: ".buildkite/package.sh"
+    branches: "master develop"
