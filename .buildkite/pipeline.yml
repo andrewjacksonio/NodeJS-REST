@@ -3,11 +3,13 @@ steps:
     command: npm run pre-test
     soft_fail:
       - exit_status: 1
+    plugins:
+      - docker-compose#v3.1.0:
+          build: api
   - name: ":node: Test"
     command: npm run test
     plugins:
       - docker-compose#v3.1.0:
-          build: api
           run: 
             - api
             - web-cli
