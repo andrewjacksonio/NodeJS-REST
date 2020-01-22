@@ -9,7 +9,7 @@ steps:
   - name: ":node: Pre-Test(Lint)"
     soft_fail:
       - exit_status: 1
-    branches: "master"
+    branches: "master develop"
     plugins:
       - docker-compose#v3.1.0:
           run: web-cli
@@ -18,13 +18,14 @@ steps:
   - wait
 
   - name: ":node: Test"
-    branches: "master"
+    branches: "master develop"
     plugins:
       - docker-compose#v3.1.0:
           run: web-cli
           command: ["npm", "run", "test"]
 
   - wait
+
   - name: ":ecr: Upload Docker Image"
     command: ".buildkite/package.sh"
     branches: "master develop"
