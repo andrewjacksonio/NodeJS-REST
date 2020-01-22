@@ -2,8 +2,7 @@ steps:
   - name: ":docker: Build"
     plugins:
       - docker-compose#v3.1.0:
-          build:
-            context: .
+          build: db api web-cli
 
   - wait
 
