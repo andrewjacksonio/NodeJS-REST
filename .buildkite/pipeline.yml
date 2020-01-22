@@ -1,0 +1,40 @@
+steps:
+  - name: ":docker: Build"
+    plugins:
+      - docker-compose#v3.1.0:
+          build: .
+
+  - wait
+
+  - name: ":node: Test"
+    soft_fail:
+      - exit_status: 1
+    branches: "master"
+    plugins:
+      - docker-compose#v3.1.0:
+          run: web-cli
+          command: ["npm", "run", "test"]
+
+  - wait
+
+  - name: ":node: Pre-Test(Lint)"
+    soft_fail:
+      - exit_status: 1
+    branches: "master"
+    plugins:
+      - docker-compose#v3.1.0:
+          run: web-cli
+          command: ["npm", "run", "pre-test"]
+
+  - wait
+
+  - name: ":ecr: Upload Docker Image"
+    command: ".buildkite/package.sh"
+    branches: "master develop"
+
+  - wait
+
+  - name: ":kubernetes: Upload Docker Image"
+    command: ".buildkite/deploy.sh"
+    branches: "master develop"
+
