@@ -8,15 +8,25 @@ const DATABASE_USER = process.env.DATABASE_USER || 'root';
 const DATABASE_PASS = process.env.DATABASE_PASS || 'WST6wPB9Tweehnne';
 
 //local mysql db connection
-var connection = mysql.createConnection({
+/*var connection = mysql.createConnection({
+    host     : DATABASE_URI,
+    user     : DATABASE_USER,
+    password : DATABASE_PASS,
+    database : DATABASE_NAME
+});
+*/
+//connection.connect(function(err) {
+//    if (err) throw err;
+//});
+
+//module.exports = connection;
+
+
+var pool  = mysql.createPool({
     host     : DATABASE_URI,
     user     : DATABASE_USER,
     password : DATABASE_PASS,
     database : DATABASE_NAME
 });
 
-connection.connect(function(err) {
-    if (err) throw err;
-});
-
-module.exports = connection;
+module.exports = pool;

@@ -3,13 +3,7 @@ var express = require('express'),
   bodyParser = require('body-parser');
   port = process.env.PORT || 3000;
 
-
-//create api
-app.get('/', (req,res)=>{
-  res.send('Hello World AGAIN');
-})
-
-//Launch listening server on port 8080
+//Launch listening server on port 3000
 app.listen(port, function () {
   console.log('RESTful API server started on: ' + port);
 })

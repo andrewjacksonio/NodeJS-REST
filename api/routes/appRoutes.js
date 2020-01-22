@@ -7,7 +7,8 @@ module.exports = function(app) {
   app.route('/')
     .post(controller.create_a_student)
     .put(controller.update_a_student_class)
-    .delete(controller.delete_a_student);
+    .delete(controller.delete_a_student)
+    .get(controller.get_root);
 
   app.route('/students')
     .get(controller.list_all_students);

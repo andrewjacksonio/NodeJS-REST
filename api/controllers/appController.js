@@ -2,6 +2,10 @@
 
 var Student = require('../models/appModel.js');
 
+exports.get_root = function (req, res) {
+    res.send('Hello World');
+};
+
 exports.list_all_students = function (req, res) {
     Student.getAllStudent(function (err, student) {
 

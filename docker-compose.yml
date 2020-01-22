@@ -5,10 +5,14 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+      DATABASE_URI: db
     networks:
       - backend
     ports:
       - "3000:3000"
+    depends_on:
+      - db
 
   web-cli:
     image: nodejs-cli
@@ -20,6 +24,19 @@ services:
     command: sh
     depends_on:
       - api
+
+  db:
+    image: nodejs-mysql
+    build:
+      context: ./
+      dockerfile: Dockerfile.db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: WST6wPB9Tweehnne
+    networks:
+      - backend
+
 networks:
   backend:
     driver: bridge
