@@ -14,6 +14,8 @@ steps:
           run: web-cli
           command: ["npm", "run", "pre-test"]
 
+  - wait
+
   - name: ":node: Test"
     plugins:
       - docker-compose#v3.1.0:
@@ -28,7 +30,7 @@ steps:
 
   - wait
 
-  - name: ":ecr: Upload Docker Image"
+  - name: ":eks: Upload Docker Image"
     command: ".buildkite/deploy.sh"
     branches: "master develop"
 
