@@ -8,6 +8,6 @@ docker images
 
 docker tag nodejs-app ${IMAGE}:${BUILDKITE_BRANCH}-${BUILDKITE_BUILD_NUMBER}
 aws ecr get-login --no-include-email --region ${AWS_REGION} | bash
-docker push ${IMAGE}:${BUILDKITE_BRANCH}
+docker push ${IMAGE}:${BUILDKITE_BRANCH}-${BUILDKITE_BUILD_NUMBER}
 
 echo "👌"
