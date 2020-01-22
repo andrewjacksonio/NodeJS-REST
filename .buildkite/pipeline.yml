@@ -2,12 +2,12 @@ steps:
   - name: ":docker: Build"
     plugins:
       - docker-compose#v3.1.0:
-          build: .
+          build:
+            context: .
 
   - wait
 
   - name: ":node: Pre-Test(Lint)"
-    command: "docker-compose ps"
     soft_fail:
       - exit_status: 1
     branches: "master develop"
@@ -19,7 +19,6 @@ steps:
   - wait
 
   - name: ":node: Test"
-    command: "docker-compose ps"
     branches: "master develop"
     plugins:
       - docker-compose#v3.1.0:
