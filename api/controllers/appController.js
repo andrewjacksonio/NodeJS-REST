@@ -2,11 +2,11 @@
 
 var Student = require('../models/appModel.js');
 
-exports.get_root = function (req, res) {
+exports.get_root = function(req, res) {
     res.send('Hello World');
 };
 
-exports.list_all_students = function (req, res) {
+exports.list_all_students = function(req, res) {
     Student.getAllStudent(function (err, student) {
 
         console.log('controller')
@@ -17,7 +17,7 @@ exports.list_all_students = function (req, res) {
     });
 };
 
-exports.create_a_student = function (req, res) {
+exports.create_a_student = function(req, res) {
     var new_student = new Student(req.body);
 
     //handles null error 
@@ -33,7 +33,7 @@ exports.create_a_student = function (req, res) {
     }
 };
 
-exports.read_a_student = function (req, res) {
+exports.read_a_student = function(req, res) {
     if (req.query.id) {
         Student.getStudentById(req.query.id, function (err, student) {
             if (err)
@@ -53,7 +53,7 @@ exports.read_a_student = function (req, res) {
     }
 };
 
-exports.update_a_student_class = function (req, res) {
+exports.update_a_student_class = function(req, res) {
     Student.updateClassById(req.body.id, req.body.class, function (err, student) {
         if (err)
             res.send(err);
@@ -61,7 +61,7 @@ exports.update_a_student_class = function (req, res) {
     });
 };
 
-exports.delete_a_student = function (req, res) {
+exports.delete_a_student = function(req, res) {
     Student.remove(req.body.id, function (err, student) {
         if (err)
             res.send(err);

@@ -3,7 +3,7 @@ var request = require('request');
 var port = process.env.PORT || 3000;
 
 it('Main page content', function(done) {
-    this.timeout(10000);    //wait for DB startup
+    this.timeout(60000);    //wait for DB startup
 
     request('http://api:' + port , function(error, response, body) {
         expect(body).to.equal('Hello World');
