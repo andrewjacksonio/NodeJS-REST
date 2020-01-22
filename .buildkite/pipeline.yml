@@ -13,6 +13,7 @@ steps:
     plugins:
       - docker-compose#v3.1.0:
           run: web-cli
+          rm: false
           command: ["npm", "run", "pre-test"]
 
   - wait
