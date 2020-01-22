@@ -25,3 +25,10 @@ steps:
   - name: ":ecr: Upload Docker Image"
     command: ".buildkite/package.sh"
     branches: "master develop"
+
+  - wait
+
+  - name: ":ecr: Upload Docker Image"
+    command: ".buildkite/deploy.sh"
+    branches: "master develop"
+
